@@ -32,6 +32,14 @@ spec:
             secretKeyRef:
               name: jwtsecret
               key: JWTKEY
+        - name: NATS_CLUSTER_ID
+          value: posthubcluster
+        - name: NATS_CLIENT_ID
+          valueFrom:
+            fieldRef: 
+              fieldPath: metadata.name
+        - name: NATS_URL
+          value: 'http://nats-eventhub-service:4222'
         resources:
           requests:
               cpu: 250m
